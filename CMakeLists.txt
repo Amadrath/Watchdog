@@ -50,7 +50,7 @@ find_library(procps NAMES procps REQUIRED)
 # If that header is found assume that the dev package is installed
 CHECK_INCLUDE_FILE( proc/procps.h HAS_PROCPS_H)
 if(NOT HAS_PROCPS_H)
-  message(FATAL_ERROR "Could not find procps header file. Please install procps dev pacakge.")
+  message(FATAL_ERROR "Could not find procps header file. Please install package 'libprocps-dev' (or equivalent)!")
 endif(NOT HAS_PROCPS_H)
 
 include(cmake/set_control_system_adapter.cmake)
@@ -131,7 +131,7 @@ if(CMAKE_BUILD_TYPE MATCHES Debug)
 else()
   # main server executable
   add_executable(${PROJECT_NAME} ${server_sources} ${library_sources})
-  if(ADAPTER STREQUAL EPICSIOC) # This is exclusive to EPICSIOC, because this line was not present, before I added EPICSIOS as an adapter.
+  if(ADAPTER STREQUAL EPICSIOC) # This is exclusive to EPICSIOC, because this line was not present, before I added EPICSIOC as an adapter.
     set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS ${Adapter_LINK_FLAGS})
   endif(ADAPTER STREQUAL EPICSIOC)
   target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES}
