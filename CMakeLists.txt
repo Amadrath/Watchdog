@@ -62,6 +62,13 @@ PKG_CHECK_MODULES(glib REQUIRED glib-2.0)
 include_directories(SYSTEM "${LibXML++_INCLUDEDIR}/${LIBXML++_VERSION}")
 include_directories(${LibXML++_INCLUDE_DIRS})
 
+if(ADAPTER STREQUAL "EPICSIOC")
+  # Find dbd file for IOC
+  find_file(DBD_FILE ChimeraTK.dbd HINTS ${CONFIG_DIR}/ChimeraTK-ControlSystemAdapter-EPICS-IOC-Adapter/iocTemplate/dbd/)
+  # set path to shared libraries, needed to run xmlGenerator
+  set(ENV{LD_LIBRARY_PATH} ${CMAKE_INSTALL_PREFIX}/lib)
+endif()
+
 # set include directories
 include_directories(${CMAKE_SOURCE_DIR}/include)
 set(${PROJECT_NAME}_INCLUDE_DIRS ${${PROJECT_NAME}_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR}/include/)
@@ -177,14 +184,33 @@ include(cmake/enable_doxygen_documentation.cmake)
 
 # Install the executable, server information and the RPC_LIBNO file
 if("${CMAKE_INSTALL_PREFIX}" STREQUAL "/export/doocs/server")
-  install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${PROJECT_NAME})
+  set(INSTALL_BIN ${PROJECT_NAME})
   install(FILES ${CMAKE_SOURCE_DIR}/configs/RPC_LIBNO DESTINATION ${PROJECT_NAME})
-  install(TARGETS ${PROJECT_NAME}-xmlGenerator RUNTIME DESTINATION ${PROJECT_NAME})
 else()
-  install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION  bin)
-  install(TARGETS ${PROJECT_NAME}-xmlGenerator RUNTIME DESTINATION bin)
+  set(INSTALL_BIN bin)
 endif()
 
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${INSTALL_BIN})
+install(TARGETS ${PROJECT_NAME}-xmlGenerator RUNTIME DESTINATION ${INSTALL_BIN})
+
+IF(ADAPTER STREQUAL "EPICSIOC")
+  # Make IOC directories
+  #install(DIRECTORY DESTINATION ${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}_ioc/)
+  install(DIRECTORY DESTINATION ${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}_ioc/db/)
+  install(DIRECTORY DESTINATION ${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}_ioc/dbd/)
+  install(DIRECTORY DESTINATION ${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}_ioc/autosave/)
+  install(DIRECTORY DESTINATION ${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}_ioc/ioc/)
+  install(FILES ${CMAKE_SOURCE_DIR}/configs/WatchdogServerConfig.xml DESTINATION ${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}_ioc/ioc/)
+  # Generate variable-household xml
+  message(${CMAKE_INSTALL_PREFIX}/${INSTALL_BIN}/${PROJECT_NAME}-xmlGenerator)
+  execute_process(COMMAND ${CMAKE_INSTALL_PREFIX}/${INSTALL_BIN}/${PROJECT_NAME}-xmlGenerator WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}_ioc/ioc)
+  # Copy dbd-file
+  if(NOT ${DBD_FILE} STREQUAL "")
+    install(FILES ${DBD_FILE} DESTINATION ${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}_ioc/dbd)
+  endif()
+  install(FILES ${CMAKE_SOURCE_DIR}/configs/st.cmd DESTINATION ${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}_ioc/ioc)
+  configure_file(${CMAKE_SOURCE_DIR}/configs/watchdog-cfg.xml ${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}_ioc/db/watchdog-cfg.xml)
+ELSE()
 # install config files to /etc/... This allows the user to change config files and keeping these changes even if a new version of the 
 # package is installed. 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/configs/chimeratk-watchdog.service.in ${CMAKE_CURRENT_BINARY_DIR}/chimeratk-watchdog.service @ONLY)
@@ -197,4 +223,5 @@ IF(ADAPTER STREQUAL "OPCUA")
   install( FILES ${CMAKE_SOURCE_DIR}/configs/WatchdogServer_mapping.xml DESTINATION /etc/chimeratk/${PROJECT_NAME})
 ELSEIF(ADAPTER STREQUAL "DOOCS")
   install( FILES ${CMAKE_SOURCE_DIR}/configs/${PROJECT_NAME}.conf DESTINATION ${PROJECT_BINARY_DIR})
+ENDIF()
 ENDIF()
