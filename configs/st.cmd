@@ -14,6 +14,10 @@ set_savefile_path("../autosave/")
 
 ## Load record instances
 dbLoadRecords("../db/WatchdogServer-main.db", "SERVER=Tst")
+dbLoadRecords("../db/WatchdogServer-filesystem.db", "SERVER=Tst, F=0")
+dbLoadRecords("../db/WatchdogServer-filesystem.db", "SERVER=Tst, F=1")
+dbLoadRecords("../db/WatchdogServer-network.db", "SERVER=Tst, F=0")
+dbLoadRecords("../db/WatchdogServer-network.db", "SERVER=Tst, F=1")
 dbLoadRecords("../db/WatchdogServer-proc.db", "SERVER=Tst, P=0")
 dbLoadRecords("../db/WatchdogServer-proc.db", "SERVER=Tst, P=1")
 dbLoadRecords("../db/WatchdogServer-proc.db", "SERVER=Tst, P=2")

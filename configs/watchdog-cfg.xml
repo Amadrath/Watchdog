@@ -54,28 +54,6 @@
             <record pvName="$(SERVER)/WdStats/memoryUsage" source="WatchdogServer.+{WdStats}memoryUsage" />
             <record pvName="$(SERVER)/WdStats/pcpu" source="WatchdogServer.+{WdStats}pcpu" />
             <record pvName="$(SERVER)/WdStats/avpcpu" source="WatchdogServer.+{WdStats}avpcpu" />
-            <record pvName="$(SERVER)/Fs1Status/size" source="WatchdogServer.+{Fs1Status}size" />
-            <record pvName="$(SERVER)/Fs1Status/free" source="WatchdogServer.+{Fs1Status}free" />
-            <record pvName="$(SERVER)/Fs1Status/freeUser" source="WatchdogServer.+{Fs1Status}freeUser" />
-            <record pvName="$(SERVER)/Fs1Status/usage" source="WatchdogServer.+{Fs1Status}usage" />
-            <record pvName="$(SERVER)/Fs0Status/size" source="WatchdogServer.+{Fs0Status}size" />
-            <record pvName="$(SERVER)/Fs0Status/free" source="WatchdogServer.+{Fs0Status}free" />
-            <record pvName="$(SERVER)/Fs0Status/freeUser" source="WatchdogServer.+{Fs0Status}freeUser" />
-            <record pvName="$(SERVER)/Fs0Status/usage" source="WatchdogServer.+{Fs0Status}usage" />
-            <record pvName="$(SERVER)/Network1Status/rx_packates" source="WatchdogServer.+{Network1Status}rx_packates" />
-            <record pvName="$(SERVER)/Network1Status/tx_packates" source="WatchdogServer.+{Network1Status}tx_packates" />
-            <record pvName="$(SERVER)/Network1Status/rx" source="WatchdogServer.+{Network1Status}rx" />
-            <record pvName="$(SERVER)/Network1Status/tx" source="WatchdogServer.+{Network1Status}tx" />
-            <record pvName="$(SERVER)/Network1Status/rx_dropped" source="WatchdogServer.+{Network1Status}rx_dropped" />
-            <record pvName="$(SERVER)/Network1Status/tx_dropped" source="WatchdogServer.+{Network1Status}tx_dropped" />
-            <record pvName="$(SERVER)/Network1Status/collisions" source="WatchdogServer.+{Network1Status}collisions" />
-            <record pvName="$(SERVER)/Network0Status/rx_packates" source="WatchdogServer.+{Network0Status}rx_packates" />
-            <record pvName="$(SERVER)/Network0Status/tx_packates" source="WatchdogServer.+{Network0Status}tx_packates" />
-            <record pvName="$(SERVER)/Network0Status/rx" source="WatchdogServer.+{Network0Status}rx" />
-            <record pvName="$(SERVER)/Network0Status/tx" source="WatchdogServer.+{Network0Status}tx" />
-            <record pvName="$(SERVER)/Network0Status/rx_dropped" source="WatchdogServer.+{Network0Status}rx_dropped" />
-            <record pvName="$(SERVER)/Network0Status/tx_dropped" source="WatchdogServer.+{Network0Status}tx_dropped" />
-            <record pvName="$(SERVER)/Network0Status/collisions" source="WatchdogServer.+{Network0Status}collisions" />
         </recordgroup>
         <recordgroup type="lso" autosave="true">
             <field type="SCAN" value="Passive" />
@@ -116,12 +94,6 @@
             <record pvName="$(SERVER)/SystemInfo/wp" source="WatchdogServer.+{SystemInfo}wp" />
             <record pvName="$(SERVER)/SystemStatus/startTimeStr" source="WatchdogServer.+{SystemStatus}startTimeStr" />
             <record pvName="$(SERVER)/WdStats/startTimeStr" source="WatchdogServer.+{WdStats}startTimeStr" />
-            <record pvName="$(SERVER)/Fs1/deviceName" source="WatchdogServer.+{Fs1}deviceName" />
-            <record pvName="$(SERVER)/Fs1Status/mountPoint" source="WatchdogServer.+{Fs1Status}mountPoint" />
-            <record pvName="$(SERVER)/Fs0/deviceName" source="WatchdogServer.+{Fs0}deviceName" />
-            <record pvName="$(SERVER)/Fs0Status/mountPoint" source="WatchdogServer.+{Fs0Status}mountPoint" />
-            <record pvName="$(SERVER)/Network1/deviceName" source="WatchdogServer.+{Network1}deviceName" />
-            <record pvName="$(SERVER)/Network0/deviceName" source="WatchdogServer.+{Network0}deviceName" />
         </recordgroup>
         <recordgroup type="lsi" autosave="false">
             <field type="SCAN" value="I/O Intr" />
@@ -130,20 +102,6 @@
             <record pvName="$(SERVER)/SystemStatus/logTail" source="WatchdogServer.+{SystemStatus}logTail" />
             <record pvName="$(SERVER)/WdStatus/logTail" source="WatchdogServer.+{WdStatus}logTail" />
             <record pvName="$(SERVER)/WdStatus/logTailExternal" source="WatchdogServer.+{WdStatus}logTailExternal" />
-            <record pvName="$(SERVER)/Fs1Status/logTail" source="WatchdogServer.+{Fs1Status}logTail" />
-            <record pvName="$(SERVER)/Fs0Status/logTail" source="WatchdogServer.+{Fs0Status}logTail" />
-            <record pvName="$(SERVER)/Network1Status/logTail" source="WatchdogServer.+{Network1Status}logTail" />
-            <record pvName="$(SERVER)/Network0Status/logTail" source="WatchdogServer.+{Network0Status}logTail" />
-        </recordgroup>
-        <recordgroup type="ao" autosave="true">
-            <field type="SCAN" value="Passive" />
-            <field type="OUT" value="@ChimeraTKApp +{:address}" />
-            <field type="EGU" value="+{:unit}" />
-            <field type="PINI" value="1" />
-            <record pvName="$(SERVER)/Fs1Config/warningLevel" source="WatchdogServer.+{Fs1Config}warningLevel" />
-            <record pvName="$(SERVER)/Fs1Config/errorLevel" source="WatchdogServer.+{Fs1Config}errorLevel" />
-            <record pvName="$(SERVER)/Fs0Config/warningLevel" source="WatchdogServer.+{Fs0Config}warningLevel" />
-            <record pvName="$(SERVER)/Fs0Config/errorLevel" source="WatchdogServer.+{Fs0Config}errorLevel" />
         </recordgroup>
         <recordgroup type="aai" autosave="false">
             <field type="SCAN" value="I/O Intr" />
@@ -163,10 +121,6 @@
             <record pvName="$(SERVER)/Cfg/UpdateTime" source="WatchdogServer.+{Cfg}UpdateTime" />
             <record pvName="$(SERVER)/WdConfig/logTailLength" source="WatchdogServer.+{WdConfig}logTailLength" />
             <record pvName="$(SERVER)/WdConfig/logTailLengthExternal" source="WatchdogServer.+{WdConfig}logTailLengthExternal" />
-            <record pvName="$(SERVER)/Fs1Config/logTailLength" source="WatchdogServer.+{Fs1Config}logTailLength" />
-            <record pvName="$(SERVER)/Fs0Config/logTailLength" source="WatchdogServer.+{Fs0Config}logTailLength" />
-            <record pvName="$(SERVER)/Network1Config/logTailLength" source="WatchdogServer.+{Network1Config}logTailLength" />
-            <record pvName="$(SERVER)/Network0Config/logTailLength" source="WatchdogServer.+{Network0Config}logTailLength" />
         </recordgroup>
         <recordgroup type="longin" autosave="false">
             <field type="SCAN" value="I/O Intr" />
@@ -198,8 +152,6 @@
             <record pvName="$(SERVER)/WdStats/priority" source="WatchdogServer.+{WdStats}priority" />
             <record pvName="$(SERVER)/WdStats/nice" source="WatchdogServer.+{WdStats}nice" />
             <record pvName="$(SERVER)/WdStats/rss" source="WatchdogServer.+{WdStats}rss" />
-            <record pvName="$(SERVER)/Fs1Status/usageStatus" source="WatchdogServer.+{Fs1Status}usageStatus" />
-            <record pvName="$(SERVER)/Fs0Status/usageStatus" source="WatchdogServer.+{Fs0Status}usageStatus" />
         </recordgroup>
         <recordgroup type="mbbo" autosave="true">
             <field type="SCAN" value="Passive" />
@@ -216,10 +168,6 @@
             <field type="THST" value="No Logging" />
             <record pvName="$(SERVER)/SystemConfig/targetStream" source="WatchdogServer.+{SystemConfig}targetStream" />
             <record pvName="$(SERVER)/WdConfig/targetStream" source="WatchdogServer.+{WdConfig}targetStream" />
-            <record pvName="$(SERVER)/Fs1Config/targetStream" source="WatchdogServer.+{Fs1Config}targetStream" />
-            <record pvName="$(SERVER)/Fs0Config/targetStream" source="WatchdogServer.+{Fs0Config}targetStream" />
-            <record pvName="$(SERVER)/Network1Config/targetStream" source="WatchdogServer.+{Network1Config}targetStream" />
-            <record pvName="$(SERVER)/Network0Config/targetStream" source="WatchdogServer.+{Network0Config}targetStream" />
         </recordgroup>
         <recordgroup type="mbbo" autosave="true">
             <field type="SCAN" value="Passive" />
@@ -236,10 +184,170 @@
             <field type="THST" value="Nothing" />
             <record pvName="$(SERVER)/SystemConfig/logLevel" source="WatchdogServer.+{SystemConfig}logLevel" />
             <record pvName="$(SERVER)/WdConfig/logLevel" source="WatchdogServer.+{WdConfig}logLevel" />
-            <record pvName="$(SERVER)/Fs1Config/logLevel" source="WatchdogServer.+{Fs1Config}logLevel" />
-            <record pvName="$(SERVER)/Fs0Config/logLevel" source="WatchdogServer.+{Fs0Config}logLevel" />
-            <record pvName="$(SERVER)/Network1Config/logLevel" source="WatchdogServer.+{Network1Config}logLevel" />
-            <record pvName="$(SERVER)/Network0Config/logLevel" source="WatchdogServer.+{Network0Config}logLevel" />
+        </recordgroup>
+    </outputfile>
+    <outputfile path="./WatchdogServer-network.db" macroReserve="3">
+        <field type="DTYP" value="ChimeraTK" />
+        <recordgroup type="ai" autosave="false">
+            <field type="SCAN" value="I/O Intr" />
+            <field type="EGU" value="+{:unit}" />
+            <record pvName="$(SERVER)/Network$(F)Status/rx_packates" source="WatchdogServer.+{Network0Status}rx_packates">
+                <field type="INP" value="@ChimeraTKApp +{Network}$(F)/+{Status}rx_packates" />
+            </record>
+            <record pvName="$(SERVER)/Network$(F)Status/tx_packates" source="WatchdogServer.+{Network0Status}tx_packates">
+                <field type="INP" value="@ChimeraTKApp +{Network}$(F)/+{Status}tx_packates" />
+            </record>
+            <record pvName="$(SERVER)/Network$(F)Status/rx" source="WatchdogServer.+{Network0Status}rx">
+                <field type="INP" value="@ChimeraTKApp +{Network}$(F)/+{Status}rx" />
+            </record>
+            <record pvName="$(SERVER)/Network$(F)Status/tx" source="WatchdogServer.+{Network0Status}tx">
+                <field type="INP" value="@ChimeraTKApp +{Network}$(F)/+{Status}tx" />
+            </record>
+            <record pvName="$(SERVER)/Network$(F)Status/rx_dropped" source="WatchdogServer.+{Network0Status}rx_dropped">
+                <field type="INP" value="@ChimeraTKApp +{Network}$(F)/+{Status}rx_dropped" />
+            </record>
+            <record pvName="$(SERVER)/Network$(F)Status/tx_dropped" source="WatchdogServer.+{Network0Status}tx_dropped">
+                <field type="INP" value="@ChimeraTKApp +{Network}$(F)/+{Status}tx_dropped" />
+            </record>
+            <record pvName="$(SERVER)/Network$(F)Status/collisions" source="WatchdogServer.+{Network0Status}collisions">
+                <field type="INP" value="@ChimeraTKApp +{Network}$(F)/+{Status}collisions" />
+            </record>
+        </recordgroup>
+        <recordgroup type="lsi" autosave="false">
+            <field type="SCAN" value="I/O Intr" />
+            <record pvName="$(SERVER)/Network$(F)/deviceName" source="WatchdogServer.+{Network0}deviceName">
+                <field type="INP" value="@ChimeraTKApp +{Network}$(F)/deviceName" />
+                <field type="SIZV" value="257" />
+            </record>
+            <record pvName="$(SERVER)/Network$(F)Status/logTail" source="WatchdogServer.+{Network0Status}logTail">
+                <field type="INP" value="@ChimeraTKApp +{Network}$(F)/+{Status}logTail" />
+                <field type="SIZV" value="10001" />
+            </record>
+        </recordgroup>
+        <recordgroup type="longout" autosave="true">
+            <field type="SCAN" value="Passive" />
+            <field type="EGU" value="+{:unit}" />
+            <field type="PINI" value="1" />
+            <record pvName="$(SERVER)/Network$(F)Config/logTailLength" source="WatchdogServer.+{Network0Config}logTailLength">
+                <field type="OUT" value="@ChimeraTKApp +{Network}$(F)/+{Config}logTailLength" />
+            </record>
+        </recordgroup>
+        <recordgroup type="mbbo" autosave="true">
+            <field type="SCAN" value="Passive" />
+            <field type="OMSL" value="supervisory" />
+            <field type="PINI" value="1" />
+            <field type="ZRVL" value="0" />
+            <field type="ONVL" value="1" />
+            <field type="TWVL" value="2" />
+            <field type="THVL" value="3" />
+            <field type="ZRST" value="Logfile + StdOut" />
+            <field type="ONST" value="Logfile Only" />
+            <field type="TWST" value="StdOut Only" />
+            <field type="THST" value="No Logging" />
+            <record pvName="$(SERVER)/Network$(F)Config/targetStream" source="WatchdogServer.+{Network0Config}targetStream">
+                <field type="OUT" value="@ChimeraTKApp +{Network}$(F)/+{Config}targetStream" />
+            </record>
+        </recordgroup>
+        <recordgroup type="mbbo" autosave="true">
+            <field type="SCAN" value="Passive" />
+            <field type="OMSL" value="supervisory" />
+            <field type="PINI" value="1" />
+            <field type="ZRVL" value="0" />
+            <field type="ONVL" value="1" />
+            <field type="TWVL" value="2" />
+            <field type="THVL" value="3" />
+            <field type="ZRST" value="All (incl. Debug)" />
+            <field type="ONST" value="Warnings and Errors" />
+            <field type="TWST" value="Errors Only" />
+            <field type="THST" value="Nothing" />
+            <record pvName="$(SERVER)/Network$(F)Config/logLevel" source="WatchdogServer.+{Network0Config}logLevel">
+                <field type="OUT" value="@ChimeraTKApp +{Network}$(F)/+{Config}logLevel" />
+            </record>
+        </recordgroup>
+    </outputfile>
+    <outputfile path="./WatchdogServer-filesystem.db" macroReserve="4">
+        <field type="DTYP" value="ChimeraTK" />
+        <recordgroup type="ai" autosave="false">
+            <field type="SCAN" value="I/O Intr" />
+            <field type="EGU" value="+{:unit}" />
+            <record pvName="$(SERVER)/Fs$(F)Status/size" source="WatchdogServer.+{Fs0Status}size">
+                <field type="INP" value="@ChimeraTKApp +{Fs}$(F)/+{Status}size" />
+            </record>
+            <record pvName="$(SERVER)/Fs$(F)Status/free" source="WatchdogServer.+{Fs0Status}free">
+                <field type="INP" value="@ChimeraTKApp +{Fs}$(F)/+{Status}free" />
+            </record>
+            <record pvName="$(SERVER)/Fs$(F)Status/freeUser" source="WatchdogServer.+{Fs0Status}freeUser">
+                <field type="INP" value="@ChimeraTKApp +{Fs}$(F)/+{Status}freeUser" />
+            </record>
+            <record pvName="$(SERVER)/Fs$(F)Status/usage" source="WatchdogServer.+{Fs0Status}usage">
+                <field type="INP" value="@ChimeraTKApp +{Fs}$(F)/+{Status}usage" />
+            </record>
+        </recordgroup>
+        <recordgroup type="lsi" autosave="false">
+            <field type="SCAN" value="I/O Intr" />
+            <field type="SIZV" value="257" />
+            <record pvName="$(SERVER)/Fs$(F)/deviceName" source="WatchdogServer.+{Fs0}deviceName">
+                <field type="INP" value="@ChimeraTKApp +{Fs}$(F)/deviceName" />
+            </record>
+            <record pvName="$(SERVER)/Fs$(F)Status/mountPoint" source="WatchdogServer.+{Fs0Status}mountPoint">
+                <field type="INP" value="@ChimeraTKApp +{Fs}$(F)/+{Status}mountPoint" />
+            </record>
+        </recordgroup>
+        <recordgroup type="lsi" autosave="false">
+            <field type="SCAN" value="I/O Intr" />
+            <field type="SIZV" value="10001" />
+            <record pvName="$(SERVER)/Fs$(F)Status/logTail" source="WatchdogServer.+{Fs0Status}logTail">
+                <field type="INP" value="@ChimeraTKApp +{Fs}$(F)/+{Status}logTail" />
+            </record>
+        </recordgroup>
+        <recordgroup type="ao" autosave="true">
+            <field type="SCAN" value="Passive" />
+            <field type="EGU" value="+{:unit}" />
+            <field type="PINI" value="1" />
+            <record pvName="$(SERVER)/Fs$(F)Config/warningLevel" source="WatchdogServer.+{Fs0Config}warningLevel">
+                <field type="OUT" value="@ChimeraTKApp +{Fs}$(F)/+{Config}warningLevel" />
+            </record>
+            <record pvName="$(SERVER)/Fs$(F)Config/errorLevel" source="WatchdogServer.+{Fs0Config}errorLevel">
+                <field type="OUT" value="@ChimeraTKApp +{Fs}$(F)/+{Config}errorLevel" />
+            </record>
+        </recordgroup>
+        <recordgroup type="longout" autosave="true">
+            <field type="SCAN" value="Passive" />
+            <field type="EGU" value="+{:unit}" />
+            <field type="PINI" value="1" />
+            <record pvName="$(SERVER)/Fs$(F)Config/logTailLength" source="WatchdogServer.+{Fs0Config}logTailLength">
+                <field type="OUT" value="@ChimeraTKApp +{Fs}$(F)/+{Config}logTailLength" />
+            </record>
+        </recordgroup>
+        <recordgroup type="longin" autosave="false">
+            <field type="SCAN" value="I/O Intr" />
+            <field type="EGU" value="+{:unit}" />
+            <record pvName="$(SERVER)/Fs$(F)Status/usageStatus" source="WatchdogServer.+{Fs0Status}usageStatus">
+                <field type="INP" value="@ChimeraTKApp +{Fs}$(F)/+{Status}usageStatus" />
+            </record>
+        </recordgroup>
+        <recordgroup type="mbbo" autosave="true">
+            <field type="SCAN" value="Passive" />
+            <field type="OMSL" value="supervisory" />
+            <field type="PINI" value="1" />
+            <field type="ZRVL" value="0" />
+            <field type="ONVL" value="1" />
+            <field type="TWVL" value="2" />
+            <field type="THVL" value="3" />
+            <record pvName="$(SERVER)/Fs$(F)Config/targetStream" source="WatchdogServer.+{Fs0Config}targetStream">
+                <field type="OUT" value="@ChimeraTKApp +{Fs}$(F)/+{Config}targetStream" />
+                <field type="ZRST" value="Logfile + StdOut" />
+                <field type="ONST" value="Logfile Only" />
+                <field type="TWST" value="StdOut Only" />
+                <field type="THST" value="No Logging" />
+            </record>
+            <record pvName="$(SERVER)/Fs$(F)Config/logLevel" source="WatchdogServer.+{Fs0Config}logLevel">
+                <field type="OUT" value="@ChimeraTKApp +{Fs}$(F)/+{Config}logLevel" />
+                <field type="ZRST" value="All (incl. Debug)" />
+                <field type="ONST" value="Warnings and Errors" />
+                <field type="TWST" value="Errors Only" />
+                <field type="THST" value="Nothing" />
+            </record>
         </recordgroup>
     </outputfile>
     <outputfile path="./WatchdogServer-proc.db" macroReserve="4">
@@ -339,7 +447,6 @@
         </recordgroup>
         <recordgroup type="longin" autosave="false">
             <field type="SCAN" value="I/O Intr" />
-            <field type="INP" value="@ChimeraTKApp +{:address}" />
             <field type="EGU" value="+{:unit}" />
             <record pvName="$(SERVER)/$(P)Status/PID" source="WatchdogServer.+{ProcsStatus}PID">
                 <field type="INP" value="@ChimeraTKApp +{Procs}$(P)/+{Status}PID" />
